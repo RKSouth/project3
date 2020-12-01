@@ -1,15 +1,13 @@
 // Requiring necessary npm packages
-var express = require("express");
-var session = require("express-session");
+var express = require('express');
+var session = require('express-session');
 // Requiring passport as we've configured it
-var passport = require("./config/passport");
-
+var passport = require('./config/passport');
 
 // Setting up port and requiring models for syncing
 
 var PORT = process.env.PORT || 8080;
-var db = require("./models"); 
-
+var db = require('./models');
 
 // var cors = require('cors');
 
@@ -20,35 +18,50 @@ var app = express();
 // var corsOptions = {
 //     origin: "http://localhost:8081"
 //   };
-  
-  
+
 //   // parse requests of content-type - application/json
 //   app.use(bodyParser.json());
-  
+
 //   // parse requests of content-type - application/x-www-form-urlencoded
 //   app.use(bodyParser.urlencoded({ extended: true }));
 
+if (process.env.JAWSDB_URL) {
+  connection = mysql.createConnection(process.env.JAWSDB_URL);
+} else {
+  connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'password',
+    database: 'game_db',
+  });
+}
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static("public"));
+app.use(express.static('public'));
 // We need to use sessions to keep track of our user's login status
 
-app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
+app.use(
+  session({ secret: 'keyboard cat', resave: true, saveUninitialized: true })
+);
 app.use(passport.initialize());
 app.use(passport.session());
 
 // Requiring our routes
 
-require("./routes/battle-routes.js")(app);
-require("./routes/api-routes.js")(app);
-require("./routes/profile-api-routes.js")(app);
-require("./routes/character-routes.js")(app);
-
+require('./routes/battle-routes.js')(app);
+require('./routes/api-routes.js')(app);
+require('./routes/profile-api-routes.js')(app);
+require('./routes/character-routes.js')(app);
 
 // Syncing our database and logging a message to the user upon success
 // listens to the PORT
-db.sequelize.sync({force:false}).then(function() {
-    app.listen(PORT, function() {
-        console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
-    });
+db.sequelize.sync({ force: false }).then(function () {
+  app.listen(PORT, function () {
+    console.log(
+      '==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.',
+      PORT,
+      PORT
+    );
+  });
 });
