@@ -11,22 +11,22 @@ var PORT = process.env.PORT || 8080;
 var db = require("./models"); 
 
 
-// var cors = require('cors');
+var cors = require('cors');
 
 // Creating express app and configuring middleware needed for authentication
 var app = express();
 
-// app.use(cors());
-// var corsOptions = {
-//     origin: "http://localhost:8081"
-//   };
+app.use(cors());
+var corsOptions = {
+    origin: "http://localhost:8080"
+  };
   
   
-//   // parse requests of content-type - application/json
-//   app.use(bodyParser.json());
+  // parse requests of content-type - application/json
+  app.use(bodyParser.json());
   
-//   // parse requests of content-type - application/x-www-form-urlencoded
-//   app.use(bodyParser.urlencoded({ extended: true }));
+  // parse requests of content-type - application/x-www-form-urlencoded
+  app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -46,6 +46,7 @@ app.use(passport.session());
 require("./routes/api-routes.js")(app);
 require("./routes/profile-api-routes.js")(app);
 require("./routes/character-routes.js")(app);
+require("./routes/html-routes.js")(app);
 
 
 // Syncing our database and logging a message to the user upon success
