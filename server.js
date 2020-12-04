@@ -7,19 +7,19 @@ var passport = require("./config/passport");
 
 // Setting up port and requiring models for syncing
 
-var PORT = process.env.PORT || 8080;
+// var PORT = process.env.PORT || 8080;
 var db = require("./models"); 
 
 
-var cors = require('cors');
+// var cors = require('cors');
 
 // Creating express app and configuring middleware needed for authentication
 var app = express();
 
-app.use(cors());
-var corsOptions = {
-    origin: "http://localhost:8080"
-  };
+// app.use(cors());
+// var corsOptions = {
+//     origin: "http://localhost:8080"
+//   };
   
   
   // parse requests of content-type - application/json
@@ -31,10 +31,10 @@ var corsOptions = {
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 if(process.env.NODE_ENV === 'production') {
-    app.use(express.static('client/build'));
+    app.use(express.static('/client/build'));
 } else {
-app.use(express.static("client/public")); }
-// We need to use sessions to keep track of our user's login status
+app.use(express.static("/client/public")); }
+
 
 app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
