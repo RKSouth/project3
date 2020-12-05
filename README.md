@@ -82,7 +82,53 @@ For the leader board we just pulled all the user data and then used a sort funct
 
 __3. A Character Selection__
 
+*What*
+
+Before the battle opens, A user selects a character that they will play with.
+
+*Why*
+
+So users can have a dynamic game play experience by choosing different characters with different attacks in order to see which one would win
+
+*How*
+
+This is one we went back and forth with, it works just fine with the database-however because it isn't "dynamic" or changeable yet we opted to write a json file to call to instead. As you can see in order to link the attacks and the characters in the json file we needed a number for each attack- each character has 5 attacks, numbered 1 through 5, and each character has it's associated attack number (see below).
+
+![Sorting](/Images/character.json.png)
+
+Then we have to retrieve the characters from the json. This was accomplished by simply importing and setting a set state
+
+However the routes are there and everything is built. Also take note of the constant set on line 10, determining where where we are in the state of play. Most importantly though you can see this code getting the characters and looking at their attacks using the function, selectCharacter(). within the class. Below in selectCharacter() we then select cpu attacks and set the state.
+
+![Characters](/Images/characters.png)
+
+Finally, we render the characters- you may, at this point wonder why I am going into such detail here. And to that I say, because it's so cool!! 
+
+In the render characters section we use the game state to determine what should load and when, I know, awesome right??
+
+![Coolstuff](/Images/whattolookat.png)
+
+
+
 __3. A Battle with Keys__
+
+__4. For Future Development__
+
+* A log out button - not entirely necessary but nice to have
+
+* A button that allows you to play another game without reloading the website
+
+* An animated fight -because animation is better
+
+* A different database because I am sick of mysql and would like to learn how to use graphsql
+
+* The ability to add your own characters -it may conflict with animation but whatever. 
+
+* The ability to select your background and have it influence the outcome of the fight -this was Wess's idea and I think it's brilliant and I want to do it!
+
+* More dynamic character cards that maybe display the attacks related to the character
+
+* A series of fights with power-up mini games in between. This was Ry's idea but we had to scrap it due to time.
 
 ## Complications
 
