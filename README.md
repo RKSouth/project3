@@ -7,6 +7,7 @@
 * [Deployed Site](Deployed)
 * [Technologies Used](Technologies_Used)
 * [Description](Description)
+* [Complications](Complications)
 * [Features](Features)
 * [Usage](Usage)
 * [Author](Author)
@@ -31,6 +32,57 @@ This app was created to make a fun, exciting battle game so users can pass time.
 
 This game was inspired by Rock Paper Scissors, but made with 5 choice options instead of 3. 
 
+## Features
+
+__1. A Sign-in/Log In__
+
+*What*
+
+![SignIn](/Images/Signin.png)
+
+A part of the page that allows users to sign-up or log in to gain access to a personalized page with their information, the games leader board and allows them to play the game.
+
+*Why* 
+
+So that your data can appear on the leader board and you can view your user data
+
+*How?*
+
+Technologies:
+* passport.js
+* bcrypt - to keep passwords private
+* local storage - to transfer data easily from one page to another
+* mysql/jawsdb - to keep long term storage of users for use in the leader board
+* axios - to make calls to routes that then connect to the database
+
+
+Keep note: Log in function currently unavailable only sign in works
+
+__2. A leader board and User data__
+
+*What*
+
+A board that displays user stats and the leader board
+
+![SignIn](/Images/stats_leaderboard.png)
+
+*Why*
+
+To put it simply -we play to win!
+
+*How*
+
+I used local storage to hold the username that was logged in and then compare it to what was in the database. If that user was in the database then we get user stats for them.
+
+![SignIn](/Images/userbaord.png)
+
+For the leader board we just pulled all the user data and then used a sort function to display it. I made sure to add functionality for both the wins and losses. 
+
+![Sorting](/Images/sort.png)
+
+__3. A Character Selection__
+
+__3. A Battle with Keys__
 
 ## Complications
 

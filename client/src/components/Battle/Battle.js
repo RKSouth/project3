@@ -103,14 +103,14 @@ class Battle extends Component {
         winner: 'Player',
         message: `${playerCharacter.name} wins`,
       });
-      // API.saveWinner({userId: this.state.userId, wonOrLost: 1});
+    this.winPasser();
     } else if (userHealth <= 0 && cpuHealth > 0) {
       this.setState({
         inPlay: false,
         winner: 'cpu',
         message: `${cpuCharacter.name} wins`,
       });
-      // API.saveWinner({userId: this.state.userId, wonOrLost: 0});
+     this.lossPasser();
     }
   };
   winPasser() {
