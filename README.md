@@ -116,11 +116,17 @@ __3. A Battle with Keys__
 
 A battle that gives you multiple choices of attacks, and returns a result - the result being the opponents' attack, the name of the opponent's attack and the result of the battle (whether it be a draw, loose 2, win 2, loose 1, win 1). The points are decremented based off of the outcome until either opponent reaches zero. 
 
+![Battle](/Images/battleview.png)
+
 *Why*
 
 I don't have the greatest explanation as to why the game functions this way in particular because I did not write this section of code. I can only say really, because Ry wanted it that way. I did propose a decrementing structure to begin with - but he flushed it out. He spent a lot of time thinking about game dynamics and how to make it fun and engaging and this is what he came up with. 
 
 *How*
+
+The key functionality of the battle game is in the if/else statements. Ry used variables 'const attack = ['x', 'y', 'z', 'a', 'b'];' to account for every instance of the battle. 
+
+![BattleCode](/Images/battlekey.png)
 
 
 
